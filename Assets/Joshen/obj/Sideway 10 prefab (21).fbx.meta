@@ -3,7 +3,37 @@ guid: e4595b78ebcef9f4a8cd4902d32afb6f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A2
+    second: {fileID: 2100000, guid: 0df9cd3b7856bbd41b37da7b86423169, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sideway
+    second: {fileID: 2100000, guid: e64ecf7f8d2e72f4a8a93c07a4e07e47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: street_3
+    second: {fileID: 2100000, guid: 68b8e2327edf9e446baac80d55c491df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: street_4
+    second: {fileID: 2100000, guid: 9c72b2fe9b2b5024cafa2a0f9bb0d3eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: street_5
+    second: {fileID: 2100000, guid: 080167d53cd1e1a468c861ef8b364fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: street_8
+    second: {fileID: 2100000, guid: 99a1421004360ad4fb0c1045e5710c97, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
