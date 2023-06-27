@@ -14,8 +14,20 @@ public class JS_day_night : MonoBehaviour
     public Color dayfog;
     public Color nightfog;
     // Start is called before the first frame update
-   
 
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            dayOn();
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            nightOn();
+        }
+            
+    }
 
     public void dayOn()
     {
