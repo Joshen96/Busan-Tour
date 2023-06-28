@@ -10,6 +10,8 @@ public class BoogiAction_SY : MonoBehaviour
     [SerializeField] private GameObject nextButton = null;
     public GameObject SpeechBubble = null;
     [SerializeField] private GameObject player = null;
+    [SerializeField] private GameObject HelloParticle = null;
+    [SerializeField] private GameObject ByeParticle = null;
     
     public string language = "";
     private bool isPickLanguage = false;
@@ -20,11 +22,9 @@ public class BoogiAction_SY : MonoBehaviour
 
     private void Awake()
     {
-        if (!player) player = GameObject.FindWithTag("Player");
-        speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "언어를 선택하세요.\n(Choose a Language)";
-        if (nextButton.activeSelf) nextButton.SetActive(false);
-        if (!SpeechBubble.activeSelf) SpeechBubble.SetActive(true);
+        StartCoroutine(FirstToStart());
     }
+
 
     private void Update()
     {
@@ -48,12 +48,7 @@ public class BoogiAction_SY : MonoBehaviour
 
         if (other.gameObject.tag == "TouristAttraction")
         {
-            if (!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(0).gameObject.SetActive(true);// 애니(-)
-            if (!SpeechBubble.activeSelf) SpeechBubble.SetActive(true);
-            speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "";
-            if (!nextButton.activeSelf) nextButton.SetActive(true);
-            if (textIndex != 0) textIndex = 0;
-            speechText.SetNpcTalkAni(language, other.gameObject.name);
+            StartCoroutine(ParticleActivation(other));
         }
     }
 
@@ -87,10 +82,7 @@ public class BoogiAction_SY : MonoBehaviour
 
         if (other.gameObject.tag == "TouristAttraction")
         {
-            if (SpeechBubble.activeSelf) SpeechBubble.SetActive(false);
-            if (textIndex != 0) textIndex = 0;
-
-            transform.GetChild(0).gameObject.SetActive(false); // 애니(-)
+            StartCoroutine(ByeParticlePlay());
         }
     }
 
@@ -99,5 +91,49 @@ public class BoogiAction_SY : MonoBehaviour
         Vector3 dir = transform.position - player.transform.position;
         dir.y = 0;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 3f);
+    }
+
+    private IEnumerator ParticleActivation(Collider other)
+    {
+        if (HelloParticle.activeSelf) HelloParticle.SetActive(false);
+        HelloParticle.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        if (!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(0).gameObject.SetActive(true);// 애니(-)
+        if (!SpeechBubble.activeSelf) SpeechBubble.SetActive(true);
+        speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "";
+        if (!nextButton.activeSelf) nextButton.SetActive(true);
+        if (textIndex != 0) textIndex = 0;
+        speechText.SetNpcTalkAni(language, other.gameObject.name);
+    }
+
+    private IEnumerator FirstToStart()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        if (HelloParticle == null) HelloParticle = GameObject.Find("BoogiPaticle");
+        if (ByeParticle == null) ByeParticle = GameObject.Find("ByeParticle");
+        if (ByeParticle.activeSelf) ByeParticle.SetActive(false);
+        if (!HelloParticle.activeSelf) HelloParticle.SetActive(true);
+        if (!player) player = GameObject.FindWithTag("Player");
+        if (SpeechBubble.activeSelf) SpeechBubble.SetActive(false);
+
+        yield return new WaitForSeconds(0.3f);
+
+        transform.GetChild(0).gameObject.SetActive(true);
+        speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "언어를 선택하세요.\n(Choose a Language)";
+        if (nextButton.activeSelf) nextButton.SetActive(false);
+        if (!SpeechBubble.activeSelf) SpeechBubble.SetActive(true);
+    }
+
+    private IEnumerator ByeParticlePlay()
+    {
+        if (ByeParticle.activeSelf) ByeParticle.SetActive(false);
+        if (SpeechBubble.activeSelf) SpeechBubble.SetActive(false);
+        if (textIndex != 0) textIndex = 0;
+
+        yield return new WaitForSeconds(2.0f);
+
+        transform.GetChild(0).gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        ByeParticle.SetActive(true);
     }
 }

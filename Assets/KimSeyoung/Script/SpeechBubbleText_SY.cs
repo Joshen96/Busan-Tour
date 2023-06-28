@@ -236,6 +236,4 @@ public class SpeechBubbleText_SY : MonoBehaviour
         if (num >= animeNums.Count) return;
         boogiAni.SetInteger("AniNum", animeNums[num]);
     }
-
-
 }
