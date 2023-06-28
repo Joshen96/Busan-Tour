@@ -91,7 +91,7 @@ Material:
     - _FoamContrast: 0.276
     - _FoamIntensity: 1.92
     - _FoamSpeed: 0.1
-    - _FoamTiling: 1
+    - _FoamTiling: 0.673
     - _FoamVisibility: 1
     - _FogDistance: 1000
     - _FogFade: 1
@@ -102,14 +102,14 @@ Material:
     - _MediumTilingDistance: 100
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 0.29
-    - _NormalTiling: 0.02
+    - _NormalStrength: 0.63
+    - _NormalTiling: 0.268
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ProbeReflectionIntensity: 0
     - _RealtimeReflectionIntensity: 1
     - _ReflectionIntensity: 0.385
-    - _Refraction: 0.4
+    - _Refraction: 0.398
     - _RefractionDistance: 10
     - _RefractionFalloff: 1
     - _ShoreFade: 0.56
@@ -121,7 +121,7 @@ Material:
     - _UnderwaterMode: 0
     - _UnderwaterTranspDist: 13.56
     - _UnderwaterTranspFalloff: 0.78
-    - _WaveSpeed: 0.2
+    - _WaveSpeed: 2.25
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
