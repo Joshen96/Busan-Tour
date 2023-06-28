@@ -12,6 +12,7 @@ public class BoogiAction_SY : MonoBehaviour
     [SerializeField] private GameObject player = null;
     [SerializeField] private GameObject HelloParticle = null;
     [SerializeField] private GameObject ByeParticle = null;
+    [SerializeField] private GameObject spawnPosint = null;
     
     public string language = "";
     private bool isPickLanguage = false;
@@ -22,6 +23,8 @@ public class BoogiAction_SY : MonoBehaviour
 
     private void Awake()
     {
+        if (!spawnPosint) Debug.LogError("spawnPosint넣으세요오오오오~!!!");
+
         StartCoroutine(FirstToStart());
     }
 
@@ -98,7 +101,8 @@ public class BoogiAction_SY : MonoBehaviour
         if (HelloParticle.activeSelf) HelloParticle.SetActive(false);
         HelloParticle.SetActive(true);
         yield return new WaitForSeconds(0.25f);
-        if (!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(0).gameObject.SetActive(true);// 애니(-)
+        if (!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(0).gameObject.SetActive(true);
+        SetBoogiPosition();
         if (!SpeechBubble.activeSelf) SpeechBubble.SetActive(true);
         speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "";
         if (!nextButton.activeSelf) nextButton.SetActive(true);
@@ -108,10 +112,11 @@ public class BoogiAction_SY : MonoBehaviour
 
     private IEnumerator FirstToStart()
     {
+        SetBoogiPosition();
+        ByeParticle.SetActive(false);
         transform.GetChild(0).gameObject.SetActive(false);
         if (HelloParticle == null) HelloParticle = GameObject.Find("BoogiPaticle");
         if (ByeParticle == null) ByeParticle = GameObject.Find("ByeParticle");
-        if (ByeParticle.activeSelf) ByeParticle.SetActive(false);
         if (!HelloParticle.activeSelf) HelloParticle.SetActive(true);
         if (!player) player = GameObject.FindWithTag("Player");
         if (SpeechBubble.activeSelf) SpeechBubble.SetActive(false);
@@ -135,5 +140,10 @@ public class BoogiAction_SY : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         ByeParticle.SetActive(true);
+    }
+
+    private void SetBoogiPosition()
+    {
+        transform.position = spawnPosint.transform.position;
     }
 }
