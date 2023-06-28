@@ -48,7 +48,6 @@ public class BoogiAction_SY : MonoBehaviour
 
         if (other.gameObject.tag == "TouristAttraction")
         {
-            //StartCoroutine("HelloBoogi");
             if (!transform.GetChild(0).gameObject.activeSelf) transform.GetChild(0).gameObject.SetActive(true);// ¾Ö´Ï(-)
             if (!SpeechBubble.activeSelf) SpeechBubble.SetActive(true);
             speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "";
@@ -100,26 +99,5 @@ public class BoogiAction_SY : MonoBehaviour
         Vector3 dir = transform.position - player.transform.position;
         dir.y = 0;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 3f);
-    }
-
-    private IEnumerator HelloBoogi()
-    {
-        transform.GetChild(0).gameObject.SetActive(true);
-        //transform.position = player.GetComponent<PlayerScriptForBOOGI>().gameObject.transform.position;
-        speechText.boogiAni.SetInteger("AniNum", 5);
-
-        yield return new WaitForSeconds(1.0f);
-    }
-
-    private void ByeBoogi()
-    {
-        speechText.boogiAni.SetInteger("AniNum", 6);
-
-        while (transform.localScale.x > 0.5f)
-        {
-            transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f) * Time.deltaTime;
-        }
-
-        transform.GetChild(0).gameObject.SetActive(false);
     }
 }
