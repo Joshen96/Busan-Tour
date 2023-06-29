@@ -19,11 +19,11 @@ public class JS_day_night : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             dayOn();
         }
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.C))
         {
             nightOn();
         }
