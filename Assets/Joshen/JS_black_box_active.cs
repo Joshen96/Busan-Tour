@@ -41,7 +41,7 @@ public class JS_black_box_active : MonoBehaviour
         BlackBoxPad.transform.position = resetPos.position;
         BlackBoxPad.transform.rotation = resetPos.rotation;
         BlackBoxPad.transform.localEulerAngles = new Vector3(0, 90f, 0);
-        BlackBoxPad.SetActive(false);
+        //BlackBoxPad.SetActive(false);
         
     }
 

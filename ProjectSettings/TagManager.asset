@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - TouristAttraction
+  - FxTemporaire
+  - Pad
   layers:
   - Default
   - TransparentFX
