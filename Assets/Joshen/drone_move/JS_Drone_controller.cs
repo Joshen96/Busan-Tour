@@ -27,6 +27,7 @@ public class JS_Drone_controller : MonoBehaviour
 
    public void front()
     {
+        Debug.Log("ÀüÁø");
         rb.velocity = tr.forward * moveSpeed;
     }
    public void back() 
