@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class ObjectGenerator : MonoBehaviour
 {
-    public GameObject objectPrefab; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public GameObject objectPrefab2; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public GameObject objectPrefab3; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public GameObject objectPrefab4; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public GameObject objectPrefab; // »ý¼ºÇÒ ¿ÀºêÁ§Æ®ÀÇ ÇÁ¸®ÆÕ
+    public GameObject objectPrefab2; // »ý¼ºÇÒ ¿ÀºêÁ§Æ®ÀÇ ÇÁ¸®ÆÕ
+    public GameObject objectPrefab3; // »ý¼ºÇÒ ¿ÀºêÁ§Æ®ÀÇ ÇÁ¸®ÆÕ
+    public GameObject objectPrefab4; // »ý¼ºÇÒ ¿ÀºêÁ§Æ®ÀÇ ÇÁ¸®ÆÕ
     
 
-    public int numberOfObjects = 15; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½
-    public Vector3 spawnArea = new Vector3(10f, 0f, 10f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
-    public float spacing = 75f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public float heightOffset2 = 150f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public float heightOffset3 = -30f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public float heightOffset4 = 300f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public int numberOfObjects = 15; // »ý¼ºÇÒ ¿ÀºêÁ§Æ®ÀÇ ¼ö
+    public Vector3 spawnArea = new Vector3(10f, 0f, 10f); // »ý¼ºÇÒ ¿µ¿ªÀÇ Å©±â
+    public float spacing = 75f; // ¿ÀºêÁ§Æ®µé »çÀÌÀÇ °£°Ý
+    public float heightOffset = 100f; // ¿ÀºêÁ§Æ®ÀÇ ³ôÀÌ ¿ÀÇÁ¼Â
+    public float heightOffset2 = 150f; // ¿ÀºêÁ§Æ®ÀÇ ³ôÀÌ ¿ÀÇÁ¼Â
+    public float heightOffset3 = -30f; // ¿ÀºêÁ§Æ®ÀÇ ³ôÀÌ ¿ÀÇÁ¼Â
+    public float heightOffset4 = 300f; // ¿ÀºêÁ§Æ®ÀÇ ³ôÀÌ ¿ÀÇÁ¼Â
     
 
 
