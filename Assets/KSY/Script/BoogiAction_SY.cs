@@ -17,6 +17,8 @@ public class BoogiAction_SY : MonoBehaviour
     [SerializeField] private ParticleSystem Hello = null;
     [SerializeField] private ParticleSystem Bye = null;
 
+    [SerializeField] private AudioSource audioSource = null;
+
     private bool boogiIn = false;
     
     public string language = "";
@@ -33,11 +35,14 @@ public class BoogiAction_SY : MonoBehaviour
         if (!player) player = GameObject.FindWithTag("Player"); // 플레이어 자동 설정
         if (!spawnPosint) Debug.LogError("spawnPosint넣으세요오오오오~!!!"); // 부기 생성 위치 설정
         SetBoogiPosition();                     // 부기 생성위치로 이동
+        if (!audioSource) audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         if (!HelloParticle.activeSelf) HelloParticle.SetActive(true); // Hello 이펙트 시행
+        audioSource.clip = Resources.Load<AudioClip>("AudioSource/HelloBoogiSound");
+        audioSource.Play();
         StartCoroutine(BoogiStart());
     }
     private IEnumerator BoogiStart()
@@ -60,6 +65,8 @@ public class BoogiAction_SY : MonoBehaviour
             if (languageSelectButton.activeSelf) languageSelectButton.SetActive(false);     // 언어 선택 버튼 비활성화
             if (SpeechBubble.activeSelf) SpeechBubble.SetActive(false);                     // 말풍선 비활성화
             if (!ByeParticle.activeSelf) ByeParticle.SetActive(true);                       // Bye 파티클 활성화
+            audioSource.clip = Resources.Load<AudioClip>("AudioSource/ByeBoogiSound");
+            audioSource.Play();
             if (transform.GetChild(0).gameObject.activeSelf) transform.GetChild(0).gameObject.SetActive(false); // 부기 비활성화
             isPickLanguage = true;      // 언어 설정 완료
         }
@@ -87,7 +94,9 @@ public class BoogiAction_SY : MonoBehaviour
 
         if (!transform.GetChild(0).gameObject.activeSelf)
         {
-            Hello.Play();           // Start 때 파티클을 켜뒀으니 Play만 해주면 될거야 아마도? (-)
+            Hello.Play();
+            audioSource.clip = Resources.Load<AudioClip>("AudioSource/HelloBoogiSound");
+            audioSource.Play();
 
             yield return new WaitForSeconds(0.25f);
 
@@ -147,6 +156,8 @@ public class BoogiAction_SY : MonoBehaviour
         if (!boogiIn)
         { 
             transform.GetChild(0).gameObject.SetActive(false);
+            audioSource.clip = Resources.Load<AudioClip>("AudioSource/ByeBoogiSound");
+            audioSource.Play();
 
             yield return new WaitForSeconds(0.1f);
 
@@ -159,5 +170,6 @@ public class BoogiAction_SY : MonoBehaviour
     private void SetBoogiPosition()
     {
         transform.position = spawnPosint.transform.position;
+        transform.rotation = spawnPosint.transform.rotation;
     }
 }

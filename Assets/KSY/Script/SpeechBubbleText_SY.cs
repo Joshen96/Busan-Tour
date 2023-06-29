@@ -204,15 +204,15 @@ public class SpeechBubbleText_SY : MonoBehaviour
     {
         if (num <= npcTexts.Count - 1)
         {
-            StartCoroutine(Typing(npcTexts[num]));
-        } 
+            if (boogiAction.SpeechBubble.activeSelf) StartCoroutine(Typing(npcTexts[num]));
+        }
         else if (num > npcTexts.Count - 1)
-            if (boogiAction.SpeechBubble.activeSelf)
-            {
-                boogiAction.isClickNextButton = false;
-                boogiAction.SpeechBubble.SetActive(false);
-                boogiAni.SetInteger("AniNum", 0);
-            } 
+        {
+            boogiAction.isClickNextButton = false;
+            boogiAction.SpeechBubble.SetActive(false);
+            boogiAni.SetInteger("AniNum", 0);
+        }
+             
     }
 
     IEnumerator Typing(string text)
