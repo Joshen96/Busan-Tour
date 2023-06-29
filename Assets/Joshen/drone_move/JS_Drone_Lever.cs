@@ -36,5 +36,25 @@ public class JS_Drone_Lever : MonoBehaviour
             drone.right_turn();
         }
     }
-
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject == front)
+        {
+           
+            drone.front_exit();
+        }
+        if (collision.gameObject == back)
+        {
+            drone.back_exit();
+        }
+        if (collision.gameObject == left)
+        {
+            drone.left_turn_off();
+        }
+        if (collision.gameObject == right)
+        {
+            drone.right_turn_off();
+        }
+    }
+    
 }
