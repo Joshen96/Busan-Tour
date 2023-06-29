@@ -12,15 +12,14 @@ public class Rocket4 : MonoBehaviour
     IEnumerator Start()
 
     {
-        //Wait for 3 secs.
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
+        this.GetComponent<AudioSource>().Play();
 
-        //Game object will turn off
-        GameObject.Find("MeshRenderer4").SetActive(false);
-
+        yield return new WaitForSeconds(2);
         rig.isKinematic = true;
         cf.enabled = false;
-
+        yield return new WaitForSeconds(4);
+        Destroy(this.gameObject);
 
     }
 }
