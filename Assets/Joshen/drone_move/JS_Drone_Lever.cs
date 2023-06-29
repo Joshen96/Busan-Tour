@@ -6,23 +6,35 @@ public class JS_Drone_Lever : MonoBehaviour
 {
     public JS_Drone_controller drone;
 
-    private void OnCollisionEnter(Collision collision)
+    public GameObject front;
+    public GameObject back;
+    public GameObject left;
+    public GameObject right;
+
+    private void Update()
     {
-        if(collision.gameObject.name=="front")
+        
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject == front)
         {
+            Debug.Log("레버 앞감지");
             drone.front();
         }
-        if(collision.gameObject.name=="back")
+        if (collision.gameObject == back)
         {
             drone.back();
         }
-        if( collision.gameObject.name=="left")
+        if (collision.gameObject == left)
         {
             drone.left_turn();
         }
-        if( collision.gameObject.name=="right")
+        if (collision.gameObject == right)
         {
             drone.right_turn();
         }
     }
+
 }
