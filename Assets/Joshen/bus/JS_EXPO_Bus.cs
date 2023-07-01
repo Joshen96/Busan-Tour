@@ -3,36 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JS_EXPO_Bus : MonoBehaviour
-{/*
+{
     [SerializeField]
     private GameObject bus;
 
     [SerializeField]
+    private GameObject dist_ck;
+    public bool _isStop = false;
+
+    public bool _isSlow = false;
+    [SerializeField]
     private Transform player;
 
-    public Transform[] paths;
+    public float scrPlayDist_slow = 8f;
 
-    [SerializeField]
-    private float moveTime=0f;
-    
-    public float scrPlayDist = 8f;
+    public float scrPlayDist_stop = 3f;
 
 
-    public int cnt = 0;
-    private void Awake()
-    {
-        bus.transform.position = paths[0].transform.position;
-        
-    }
+   
     private void Update()
     {
-        moveTime = bus.gameObject.GetComponentInChildren<JS_bus_speed>().moveTime;
+       
 
         float dist = CalcDistanceWithTarget();
 
-        if(dist < scrPlayDist)
+        if (dist < scrPlayDist_slow && dist > scrPlayDist_stop)
         {
-            
+            _isStop = false;
+            _isSlow = true;
+            bus.GetComponent<Animator>().speed = 0.3f;
+        }
+        else if (dist < scrPlayDist_stop)
+        {
+            _isSlow = false;
+            _isStop = true;
+            bus.GetComponent<Animator>().speed = 0f;
+        }
+        else
+        {
+            _isSlow = false;
+            _isStop = false;
+            bus.GetComponent<Animator>().speed = 1f;
         }
 
 
@@ -41,52 +52,14 @@ public class JS_EXPO_Bus : MonoBehaviour
     private float CalcDistanceWithTarget()
     {
         Vector3 dirToTarget =
-            player.position - bus.transform.position;
+            player.position - dist_ck.transform.position;
         float dist = dirToTarget.magnitude;
 
         dist = Vector3.Distance(
-            player.position, bus.transform.position);
+            player.position, dist_ck.transform.position);
 
         return dist;
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void movetonextpos(Transform nowpath, Transform nextpath)
-    {
-        StartCoroutine(MoveTo(nowpath,nextpath));
-    }
-
-    private IEnumerator MoveTo(Transform nowpath,Transform nextpath)
-    {
-
-         //½Ã
-
-        
-        
-    }
-    public void turnBus(Transform _nextpath)
-    {
-        Vector3 dir = _nextpath.transform.position - bus.transform.position;
-        bus.gameObject.transform.rotation = Quaternion.Lerp(bus.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 10f);
-
-    }*/
 }
