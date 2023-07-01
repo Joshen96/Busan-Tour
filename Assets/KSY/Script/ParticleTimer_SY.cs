@@ -17,9 +17,10 @@ public class ParticleTimer_SY : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        if (timer < triggerInterval)
+        { timer += Time.deltaTime; }
 
-        if (timer >= triggerInterval)
+        else if (timer >= triggerInterval)
         {
             particleSystem.Play();
             timer = 0f;

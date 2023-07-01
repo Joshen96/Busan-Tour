@@ -11,7 +11,6 @@ public class AudioControl : MonoBehaviour
     private void Awake()
     {
         if (!audioSorce) audioSorce = GetComponent<AudioSource>();
-        if (audioSorce.playOnAwake) audioSorce.playOnAwake = false;
     }
 
     private void Update()
