@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4994196158766968}
   - component: {fileID: 198688797825649356}
   - component: {fileID: 199381216764531364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 4402637839813916}
   - component: {fileID: 198056339640775494}
   - component: {fileID: 199701394940207902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9536,7 +9536,7 @@ GameObject:
   - component: {fileID: 75461939023559764}
   - component: {fileID: 114131326525563466}
   - component: {fileID: 82294708064190674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocket 2
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -9712,7 +9712,7 @@ GameObject:
   - component: {fileID: 4694012405778964}
   - component: {fileID: 198019245514893638}
   - component: {fileID: 199003482267232792}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14469,7 +14469,7 @@ GameObject:
   - component: {fileID: 4860260714338770}
   - component: {fileID: 198757799618130640}
   - component: {fileID: 199664625902956218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19226,7 +19226,7 @@ GameObject:
   - component: {fileID: 4387423852566822}
   - component: {fileID: 198028048966618160}
   - component: {fileID: 199297981941058378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23983,7 +23983,7 @@ GameObject:
   - component: {fileID: 4830306798487914}
   - component: {fileID: 198434687057507826}
   - component: {fileID: 199042879645535658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28740,7 +28740,7 @@ GameObject:
   - component: {fileID: 4153203667454176}
   - component: {fileID: 198986683528247138}
   - component: {fileID: 199571095632594138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33497,7 +33497,7 @@ GameObject:
   - component: {fileID: 4682368101208364}
   - component: {fileID: 198480321452711588}
   - component: {fileID: 199896304931993890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38254,7 +38254,7 @@ GameObject:
   - component: {fileID: 4871297046598132}
   - component: {fileID: 198044566998081892}
   - component: {fileID: 199758834683270240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43011,7 +43011,7 @@ GameObject:
   - component: {fileID: 4397245617495776}
   - component: {fileID: 198186237441394122}
   - component: {fileID: 199997437662023210}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47768,7 +47768,7 @@ GameObject:
   - component: {fileID: 4304621186737512}
   - component: {fileID: 198474011902710188}
   - component: {fileID: 199763890076510048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52527,7 +52527,7 @@ GameObject:
   - component: {fileID: 4521568150053630}
   - component: {fileID: 198859858457124224}
   - component: {fileID: 199651386065621750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57284,7 +57284,7 @@ GameObject:
   - component: {fileID: 4896350592449754}
   - component: {fileID: 33222505753734324}
   - component: {fileID: 23415467603993310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MeshRenderer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57367,7 +57367,7 @@ GameObject:
   - component: {fileID: 4589881913517524}
   - component: {fileID: 198178410700450952}
   - component: {fileID: 199050303623731276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketPropulsion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62142,7 +62142,7 @@ GameObject:
   - component: {fileID: 4611148392892728}
   - component: {fileID: 198771608588712994}
   - component: {fileID: 199364032102794542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
