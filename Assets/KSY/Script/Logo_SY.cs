@@ -13,16 +13,19 @@ public class Logo_SY : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))  FadeOut();
+        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
+        {
+            FadeOut();
+        }
     }
 
-    public void FadeOut()
+    private void FadeOut()
     {
-        StartCoroutine(FadeOut(3f));
+        StartCoroutine(FadeOut(2f));
     }
+
     IEnumerator FadeOut(float fadeOutTime)
     {
-
         Color tempColor = logoRenderer.color;
         while (tempColor.a > 0f)
         {
