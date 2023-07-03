@@ -6,72 +6,60 @@ public class JS_EXPO_Bus : MonoBehaviour
 {
     [SerializeField]
     private GameObject bus;
+
+    [SerializeField]
+    private GameObject dist_ck;
+    public bool _isStop = false;
+
+    public bool _isSlow = false;
     [SerializeField]
     private Transform player;
-    public Transform[] paths;
-    [SerializeField]
-    private float moveTime;
 
-    public float current;
-    public float percent;
-    [SerializeField]
-    AnimationCurve moveCurve;
+    public float scrPlayDist_slow = 8f;
 
-    public int cnt = 0;
-    private void Awake()
-    {
-        
-        StartCoroutine(nameof(MoveTo));
-    }
+    public float scrPlayDist_stop = 3f;
+
+
+   
     private void Update()
     {
-        //turnBus(paths[cnt+1]);
-    }
+       
 
+        float dist = CalcDistanceWithTarget();
 
-    private IEnumerator MoveTo()
-    {
-        bus.transform.position = paths[0].transform.position;
-
-
-
-        while (true)
+        if (dist < scrPlayDist_slow && dist > scrPlayDist_stop)
         {
-            current = 0f;
-            percent = 0f;
-            while (percent < 1)
-            {
-
-                current += Time.deltaTime;
-                percent = current / moveTime;
-
-                bus.transform.position = Vector3.Lerp(paths[cnt].transform.position, paths[cnt + 1].position, moveCurve.Evaluate(percent));
-                if (percent > 0.8)
-                { 
-                    if(cnt==4)
-                    {
-                        cnt = 0;
-                    }
-                    turnBus(paths[cnt + 2]);
-                    
-                }
-
-                yield return null;
-
-            }
-            cnt++;
-            if (cnt >= paths.Length-1)
-            {
-                cnt = 0;
-            }
-
+            _isStop = false;
+            _isSlow = true;
+            bus.GetComponent<Animator>().speed = 0.3f;
         }
-        
-    }
-    public void turnBus(Transform _nextpath)
-    {
-        Vector3 dir = _nextpath.transform.position - bus.transform.position;
-        bus.gameObject.transform.rotation = Quaternion.Lerp(bus.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 5f);
+        else if (dist < scrPlayDist_stop)
+        {
+            _isSlow = false;
+            _isStop = true;
+            bus.GetComponent<Animator>().speed = 0f;
+        }
+        else
+        {
+            _isSlow = false;
+            _isStop = false;
+            bus.GetComponent<Animator>().speed = 1f;
+        }
+
 
     }
+
+    private float CalcDistanceWithTarget()
+    {
+        Vector3 dirToTarget =
+            player.position - dist_ck.transform.position;
+        float dist = dirToTarget.magnitude;
+
+        dist = Vector3.Distance(
+            player.position, dist_ck.transform.position);
+
+        return dist;
+    }
+
+
 }
