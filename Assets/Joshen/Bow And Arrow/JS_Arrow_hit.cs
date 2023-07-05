@@ -17,4 +17,13 @@ public class JS_Arrow_hit : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("ArrowTip"))
+        {
+            core.Play();
+        }
+
+    }
+
 }

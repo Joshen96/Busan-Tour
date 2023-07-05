@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Pad
   - ArrowTip
+  - target
   layers:
   - Default
   - TransparentFX
