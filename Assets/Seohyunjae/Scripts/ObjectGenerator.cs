@@ -6,6 +6,7 @@ public class ObjectGenerator : MonoBehaviour
     public GameObject objectPrefab2; // 생성할 오브젝트의 프리팹
     public GameObject objectPrefab3; // 생성할 오브젝트의 프리팹
     public GameObject objectPrefab4; // 생성할 오브젝트의 프리팹
+    public GameObject Lastshot; // 생성할 오브젝트의 프리팹
     public GameObject Set1;
     public GameObject Set2;
     public GameObject[] Set3;
@@ -29,6 +30,18 @@ public class ObjectGenerator : MonoBehaviour
         ani = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X)) {
+            start_fire_ani();
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            last_shot();
+        }
+
+        
+    }
     public void rocket1_shot()
     {
         for (int i = 0; i < numberOfObjects; i++)
@@ -85,6 +98,21 @@ public class ObjectGenerator : MonoBehaviour
             GameObject newObject = Instantiate(objectPrefab4, randomPosition, Quaternion.identity);
             newObject.transform.SetParent(this.transform.GetChild(4));
             newObject.transform.position = this.transform.GetChild(4).transform.position;
+        }
+    }
+
+    public void last_shot()
+    {
+        for (int i = 0; i < numberOfObjects; i++)
+        {
+            Vector3 randomPosition = transform.position + new Vector3(
+                Random.Range(-spawnArea.x / 2, spawnArea.x / 2) + (i * spacing),
+                heightOffset4,
+                Random.Range(-spawnArea.z / 2, spawnArea.z / 2)
+            );
+
+            GameObject newObject = Instantiate(Lastshot, randomPosition, Quaternion.identity);
+            
         }
     }
     public void Set1_shot()
