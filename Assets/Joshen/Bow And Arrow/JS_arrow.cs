@@ -81,5 +81,12 @@ public class JS_arrow : MonoBehaviour
         _rigidBody.useGravity = usePhysics;
         _rigidBody.isKinematic = !usePhysics;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("target"))
+        {
+            this.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
 }
 
