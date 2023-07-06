@@ -9,6 +9,8 @@ TagManager:
   - Pad
   - ArrowTip
   - target
+  - WaterTank
+  - Gamecount
   layers:
   - Default
   - TransparentFX
