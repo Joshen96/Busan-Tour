@@ -11,6 +11,7 @@ TagManager:
   - target
   - WaterTank
   - Gamecount
+  - SoundController
   layers:
   - Default
   - TransparentFX

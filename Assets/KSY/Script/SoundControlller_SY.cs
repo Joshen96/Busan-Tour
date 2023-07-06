@@ -9,10 +9,25 @@ public class SoundControlller_SY : MonoBehaviour
     [SerializeField] private Slider slider = null;
     private float preSoundVolume = 0;
 
+    #region Public Variables
+    [Header(" BGM Toggle -")]
     public Toggle seaToggle = null;
     public Toggle beachToggle = null;
     public Toggle freshToggle = null;
     public Toggle coolToggle = null;
+
+    [Header(" Drone Toggle -")]
+    public Toggle electronicToggle = null;
+    public Toggle broadcastToggle = null;
+    public Toggle dandyToggle = null;
+
+    [Header(" Party Toggle -")]
+    public Toggle gayageumToggle = null;
+    public Toggle TrotToggle = null;
+    public Toggle jazzToggle = null;
+
+    #endregion
+
 
     private void Awake()
     {
@@ -36,6 +51,9 @@ public class SoundControlller_SY : MonoBehaviour
             if (audioSource.volume == 0f) audioSource.volume = preSoundVolume;
         }
     }
+
+    // BGM
+    #region Public Variables
 
     public void SetSeaBGM(bool _check)
     {
@@ -71,7 +89,6 @@ public class SoundControlller_SY : MonoBehaviour
             }
         }
     }
-
     public void SetBeachBGM(bool _check)
     {
         if (_check)
@@ -174,4 +191,242 @@ public class SoundControlller_SY : MonoBehaviour
             }
         }
     }
+    #endregion
+
+
+    // Drone
+    #region Public Variables
+    public void SetElectronicBGM(bool _check)
+    {
+        if (_check)
+        {
+            // 나머지 토글 끄기
+            broadcastToggle.isOn = false;
+            dandyToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
+            {
+                audioSource.clip = Resources.Load<AudioClip>("BGM/" + "일렉트로닉드론BGM");
+                audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "일렉트로닉드론BGM" && audioSource.clip.name != "멋쟁이드론BGM" && audioSource.clip.name != "브로드캐스트드론BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "일렉트로닉드론BGM");
+                    audioSource.Play();
+                }
+
+                else if (audioSource.clip.name == "일렉트로닉드론BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "일렉트로닉드론BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "일렉트로닉드론BGM");
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+    public void SetBroadcastBGM(bool _check)
+    {
+        if (_check)
+        {
+            // 나머지 토글 끄기
+            electronicToggle.isOn = false;
+            dandyToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
+            {
+                audioSource.clip = Resources.Load<AudioClip>("BGM/" + "브로드캐스트드론BGM");
+                audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "일렉트로닉드론BGM" && audioSource.clip.name != "멋쟁이드론BGM" && audioSource.clip.name != "브로드캐스트드론BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "브로드캐스트드론BGM");
+                    audioSource.Play();
+                }
+
+                else if (audioSource.clip.name == "브로드캐스트드론BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "브로드캐스트드론BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "브로드캐스트드론BGM");
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+    public void SetDandyBGM(bool _check)
+    {
+        if (_check)
+        {
+            // 나머지 토글 끄기
+            electronicToggle.isOn = false;
+            broadcastToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
+            {
+                audioSource.clip = Resources.Load<AudioClip>("BGM/" + "멋쟁이드론BGM");
+                audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "일렉트로닉드론BGM" && audioSource.clip.name != "멋쟁이드론BGM" && audioSource.clip.name != "브로드캐스트드론BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "멋쟁이드론BGM");
+                    audioSource.Play();
+                }
+
+                else if (audioSource.clip.name == "멋쟁이드론BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "멋쟁이드론BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "멋쟁이드론BGM");
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+    #endregion
+
+
+    // Party
+    #region Public Variables
+
+    public void SetGayageumBGM(bool _check)
+    {
+        if (_check)
+        {
+            // 나머지 토글 끄기
+            TrotToggle.isOn = false;
+            jazzToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
+            {
+                audioSource.clip = Resources.Load<AudioClip>("BGM/" + "가야금파티BGM");
+                audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "가야금파티BGM" && audioSource.clip.name != "재즈파티BGM" && audioSource.clip.name != "트로트파티BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "가야금파티BGM");
+                    audioSource.Play();
+                }
+
+                else if (audioSource.clip.name == "가야금파티BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "가야금파티BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "가야금파티BGM");
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+
+    public void SetTrotBGM(bool _check)
+    {
+        if (_check)
+        {
+            // 나머지 토글 끄기
+            gayageumToggle.isOn = false;
+            jazzToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
+            {
+                audioSource.clip = Resources.Load<AudioClip>("BGM/" + "트로트파티BGM");
+                audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "가야금파티BGM" && audioSource.clip.name != "재즈파티BGM" && audioSource.clip.name != "트로트파티BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "트로트파티BGM");
+                    audioSource.Play();
+                }
+
+                else if (audioSource.clip.name == "트로트파티BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "트로트파티BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "트로트파티BGM");
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+
+    public void SetJazzBGM(bool _check)
+    {
+        if (_check)
+        {
+            // 나머지 토글 끄기
+            gayageumToggle.isOn = false;
+            TrotToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
+            {
+                audioSource.clip = Resources.Load<AudioClip>("BGM/" + "재즈파티BGM");
+                audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "가야금파티BGM" && audioSource.clip.name != "재즈파티BGM" && audioSource.clip.name != "트로트파티BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "재즈파티BGM");
+                    audioSource.Play();
+                }
+
+                else if (audioSource.clip.name == "재즈파티BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "재즈파티BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "재즈파티BGM");
+                    audioSource.Play();
+                }
+            }
+        }
+    }
+    #endregion
+
+
 }
