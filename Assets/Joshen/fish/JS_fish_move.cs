@@ -24,7 +24,13 @@ public class JS_fish_move : MonoBehaviour
     {
          Vector3 moveAmount = Speed * Vector3.forward * Time.deltaTime;
          myTransform.Translate(moveAmount);
-       // rb.AddForce(Vector3.forward * Speed);   
+
+        if(!game._isgamestart)
+        {
+            Destroy(this.gameObject);
+
+        }
+        // rb.AddForce(Vector3.forward * Speed);   
 
         // if (myTransform.position.y <= -60.0f)
         //{
@@ -52,5 +58,6 @@ public class JS_fish_move : MonoBehaviour
     public void getpoint()
     {
         game.gamescore++;
+        Destroy(this.gameObject);
     }
 }
