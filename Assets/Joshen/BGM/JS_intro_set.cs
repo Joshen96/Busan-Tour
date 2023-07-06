@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class JS_intro_set : MonoBehaviour
 {
-    [SerializeField]
-    AudioSource introsound;
+    [SerializeField] private SoundControlller_SY soundController = null;
+    private bool start = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            introsound.Play();
-            this.gameObject.SetActive(false);
+            if (!start)
+            {
+                start = true;
+                StartCoroutine(StartInterval());
+            }
         }
+    }
 
+    IEnumerator StartInterval()
+    {
+        soundController.seaToggle.isOn = true;
+
+        yield return new WaitForSeconds(13.5f);
+        soundController.freshToggle.isOn = true;
+        this.gameObject.SetActive(false);
     }
 }

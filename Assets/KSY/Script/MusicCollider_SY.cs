@@ -5,6 +5,7 @@ using UnityEngine;
 public class MusicCollider_SY : MonoBehaviour
 {
     [SerializeField] private float BGM_volume = 1.0f;
+    [SerializeField] private SoundControlller_SY soundController = null;
 
     private void OnTriggerStay(Collider other)
     {
@@ -39,10 +40,24 @@ public class MusicCollider_SY : MonoBehaviour
             {
                 other.GetComponent<AudioSource>().volume = 0;
                 other.GetComponent<AudioSource>().Pause();
-                other.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Sound/" + gameObject.name);
-                // 배경음악 지정된 걸로 실행되기 만들어야함(-)
+
+                if (soundController.beachToggle.isOn)
+                {
+                    soundController.SetBeachBGM(true);
+                }
+                else if (soundController.seaToggle.isOn)
+                {
+                    soundController.SetSeaBGM(true);
+                }
+                else if (soundController.freshToggle.isOn)
+                {
+                    soundController.SetFreshBGM(true);
+                }
+                else if (soundController.coolToggle.isOn)
+                {
+                    soundController.SetCoolBGM(true);
+                }
                 other.GetComponent<AudioSource>().volume = 1;
-                other.GetComponent<AudioSource>().Play();
             }
         }
     }
