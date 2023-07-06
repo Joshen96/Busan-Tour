@@ -6,6 +6,8 @@ public class Logo_SY : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer logoRenderer = null;
 
+    private bool playName = false;
+
     private void Start()
     {
         if (!logoRenderer) logoRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -16,12 +18,18 @@ public class Logo_SY : MonoBehaviour
         if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
         {
             FadeOut();
+
+            if (!playName)
+            {
+                playName = true;
+                transform.GetChild(1).GetComponent<Name_SY>().FadeOut();
+            } 
         }
     }
 
     private void FadeOut()
     {
-        StartCoroutine(FadeOut(2f));
+        StartCoroutine(FadeOut(3f));
     }
 
     IEnumerator FadeOut(float fadeOutTime)

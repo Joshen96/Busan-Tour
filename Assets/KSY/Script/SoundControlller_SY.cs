@@ -5,23 +5,18 @@ using UnityEngine.UI;
 
 public class SoundControlller_SY : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource = null;
+    public AudioSource audioSource = null;
     [SerializeField] private Slider slider = null;
     private float preSoundVolume = 0;
 
-    [SerializeField] private Toggle seaToggle = null;
-    [SerializeField] private Toggle beachToggle = null;
-    [SerializeField] private Toggle freshToggle = null;
-    [SerializeField] private Toggle coolToggle = null;
+    public Toggle seaToggle = null;
+    public Toggle beachToggle = null;
+    public Toggle freshToggle = null;
+    public Toggle coolToggle = null;
 
     private void Awake()
     {
         if (!audioSource) audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
-    }
-
-    private void Update()
-    {
-        if (!seaToggle.isOn && !beachToggle.isOn && !freshToggle.isOn && !coolToggle.isOn) seaToggle.isOn = true;
     }
 
     public void SetVolume(float _volume)            // 음량 슬라이더에 들어갈 이벤트
@@ -46,63 +41,68 @@ public class SoundControlller_SY : MonoBehaviour
     {
         if (_check)
         {
-            if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM" && audioSource.clip.name != "해변느낌BGM")
+            // 나머지 토글 끄기
+            beachToggle.isOn = false;
+            freshToggle.isOn = false;
+            coolToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
             {
-                _check = false;
-                return;
-            }
-            else
-            {
-                switch (audioSource.clip.name)
-                {
-                    case "바다느낌BGM":
-                        {  seaToggle.isOn = true;  }
-                        return;
-                    case "산뜻한느낌BGM":
-                        { freshToggle.isOn = false;  }
-                        break;
-                    case "시원한느낌BGM":
-                        { coolToggle.isOn = false; }
-                        break;
-                    case "해변느낌BGM":
-                        { beachToggle.isOn = false; }
-                        break;
-                }
-                audioSource.Pause();
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "바다느낌BGM");
                 audioSource.Play();
             }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "해변느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM") return;
+                // nusic콜라이더 영향을 받는 중이므로 return
+
+                else if (audioSource.clip.name == "바다느낌BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "바다느낌BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "바다느낌BGM");
+                    audioSource.Play();
+                }
+            }
         }
     }
+
     public void SetBeachBGM(bool _check)
     {
         if (_check)
         {
-            if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM" && audioSource.clip.name != "해변느낌BGM")
+            // 나머지 토글 끄기
+            seaToggle.isOn = false;
+            freshToggle.isOn = false;
+            coolToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
             {
-                _check = false;
-                return;
-            }
-            else
-            {
-                switch (audioSource.clip.name)
-                {
-                    case "바다느낌BGM":
-                        { seaToggle.isOn = false; }
-                        break;
-                    case "산뜻한느낌BGM":
-                        { freshToggle.isOn = false; }
-                        break;
-                    case "시원한느낌BGM":
-                        { coolToggle.isOn = false; }
-                        break;
-                    case "해변느낌BGM":
-                        { beachToggle.isOn = true; }
-                        return;
-                }
-                audioSource.Pause();
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "해변느낌BGM");
                 audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "해변느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM") return;
+                // nusic콜라이더 영향을 받는 중이므로 return
+
+                else if (audioSource.clip.name == "해변느낌BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "해변느낌BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "해변느낌BGM");
+                    audioSource.Play();
+                }
             }
         }
     }
@@ -110,31 +110,33 @@ public class SoundControlller_SY : MonoBehaviour
     {
         if (_check)
         {
-            if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM" && audioSource.clip.name != "해변느낌BGM")
+            // 나머지 토글 끄기
+            beachToggle.isOn = false;
+            seaToggle.isOn = false;
+            coolToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
             {
-                _check = false;
-                return;
-            }
-            else
-            {
-                switch (audioSource.clip.name)
-                {
-                    case "바다느낌BGM":
-                        { seaToggle.isOn = false; }
-                        break;
-                    case "산뜻한느낌BGM":
-                        { freshToggle.isOn = true; }
-                        return;
-                    case "시원한느낌BGM":
-                        { coolToggle.isOn = false; }
-                        break;
-                    case "해변느낌BGM":
-                        { beachToggle.isOn = false; }
-                        break;
-                }
-                audioSource.Pause();
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "산뜻한느낌BGM");
                 audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "해변느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM") return;
+                // nusic콜라이더 영향을 받는 중이므로 return
+
+                else if (audioSource.clip.name == "산뜻한느낌BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "산뜻한느낌BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "산뜻한느낌BGM");
+                    audioSource.Play();
+                }
             }
         }
     }
@@ -142,31 +144,33 @@ public class SoundControlller_SY : MonoBehaviour
     {
         if (_check)
         {
-            if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM" && audioSource.clip.name != "해변느낌BGM")
+            // 나머지 토글 끄기
+            beachToggle.isOn = false;
+            freshToggle.isOn = false;
+            seaToggle.isOn = false;
+
+            if (!audioSource.clip)      // 오디오 클립 null이면
             {
-                _check = false;
-                return;
-            }
-            else
-            {
-                switch (audioSource.clip.name)
-                {
-                    case "바다느낌BGM":
-                        { seaToggle.isOn = false; }
-                        break;
-                    case "산뜻한느낌BGM":
-                        { freshToggle.isOn = false; }
-                        break;
-                    case "시원한느낌BGM":
-                        { coolToggle.isOn = true; }
-                        return;
-                    case "해변느낌BGM":
-                        { beachToggle.isOn = false; }
-                        break;
-                }
-                audioSource.Pause();
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "시원한느낌BGM");
                 audioSource.Play();
+            }
+            else                        // 오디오 클립 null 아니면
+            {
+                if (audioSource.clip.name != "바다느낌BGM" && audioSource.clip.name != "해변느낌BGM" && audioSource.clip.name != "산뜻한느낌BGM" && audioSource.clip.name != "시원한느낌BGM") return;
+                // nusic콜라이더 영향을 받는 중이므로 return
+
+                else if (audioSource.clip.name == "시원한느낌BGM")
+                {
+                    if (audioSource.isPlaying) return;
+                    else audioSource.Play();
+                }
+
+                else if (audioSource.clip.name != "시원한느낌BGM")
+                {
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load<AudioClip>("BGM/" + "시원한느낌BGM");
+                    audioSource.Play();
+                }
             }
         }
     }
