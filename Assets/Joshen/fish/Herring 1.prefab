@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072240063268549527}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5659179777164181342}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: fin.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6309895148100236899}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4564425815413352818}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: fin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5947261826679996943}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4731656753387408528}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: tail.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1374462051544446780}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: fin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8796472293377180051}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: tail.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 442967109772432594}
   - component: {fileID: 7053923268994377573}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Mesh_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5389900581907136210}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: fin.03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2715531479143938597}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: fin.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 39590405823877144}
   - component: {fileID: -3055233689131630205}
   - component: {fileID: 2356384182640933816}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Herring 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
