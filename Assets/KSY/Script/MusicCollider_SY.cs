@@ -4,43 +4,96 @@ using UnityEngine;
 
 public class MusicCollider_SY : MonoBehaviour
 {
-    [SerializeField] private float BGM_volume = 1.0f;
     [SerializeField] private SoundControlller_SY soundController = null;
-    [SerializeField] private Sound_xrinter_SY soundXrinter = null;
-    [SerializeField] private GameObject colliderUI = null;
-    [SerializeField] private GameObject defaultUI = null;
+    private bool isColliderMusicPlay = false;
+    private bool isPlayerInCollider = false;
 
     private void Awake()
     {
         if (!soundController) soundController = GameObject.FindWithTag("SoundController").GetComponent<SoundControlller_SY>();
     }
 
+    private void PlayColliderBGM(Collider other)
+    {
+        switch (gameObject.name)
+        {
+            case "감옥BGM":
+                {
+                    other.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Sound/감옥BGM");
+                    other.GetComponent<AudioSource>().volume = 1;
+                    other.GetComponent<AudioSource>().Play();
+                    if (!isColliderMusicPlay) isColliderMusicPlay = true;
+                }
+                break;
+            case "가야금BGM":
+                {
+                    other.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("BGM/가야금파티BGM");
+                    other.GetComponent<AudioSource>().volume = 1;
+                    other.GetComponent<AudioSource>().Play();
+                    if (!isColliderMusicPlay) isColliderMusicPlay = true;
+                }
+                break;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            while (other.GetComponent<AudioSource>().volume > 0)
+            if (other.GetComponent<AudioSource>().clip.name == "감옥BGM" || other.GetComponent<AudioSource>().clip.name == "가야금파티BGM")
             {
-                other.GetComponent<AudioSource>().volume -= Time.deltaTime * 1.5f;
+                if (!isColliderMusicPlay) isColliderMusicPlay = true;
 
-                if (other.GetComponent<AudioSource>().volume <= 0)
+                while (other.GetComponent<AudioSource>().volume < 1)
                 {
-                    other.GetComponent<AudioSource>().volume = 0;
-                    other.GetComponent<AudioSource>().Pause();
+                    other.GetComponent<AudioSource>().volume += Time.deltaTime * 1.5f;
                 }
             }
+            else
+            {
+                if (isColliderMusicPlay) isColliderMusicPlay = false;
 
-            if (gameObject.name == "드론쇼콜라이더")
-            {
-                soundXrinter.soundUI = colliderUI;
-                soundController.SetElectronicBGM(true);
-                soundController.SetVolume(1);
+                while (other.GetComponent<AudioSource>().volume > 0)
+                {
+                    other.GetComponent<AudioSource>().volume -= Time.deltaTime * 1.5f;
+
+                    if (other.GetComponent<AudioSource>().volume <= 0)
+                    {
+                        other.GetComponent<AudioSource>().volume = 0;
+                        if (!isColliderMusicPlay) soundController.BGMStopCheck();
+                    }
+                }
             }
-            else if (gameObject.name == "어방축제콜라이더")
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (other.GetComponent<AudioSource>().clip.name == "감옥BGM" || other.GetComponent<AudioSource>().clip.name == "가야금파티BGM")
             {
-                soundXrinter.soundUI = colliderUI;
-                // soundController.SetElectronicBGM(true); (-)
-                soundController.SetVolume(1);
+                if (!isColliderMusicPlay) isColliderMusicPlay = true;
+                if (!other.GetComponent<AudioSource>().isPlaying)
+                {
+                    other.GetComponent<AudioSource>().volume = 1f;
+                    other.GetComponent<AudioSource>().Play();
+                }
+            }
+            else 
+            {
+                while (other.GetComponent<AudioSource>().volume > 0)
+                {
+                    other.GetComponent<AudioSource>().volume -= Time.deltaTime * 1.5f;
+
+                    if (other.GetComponent<AudioSource>().volume <= 0)
+                    {
+                        other.GetComponent<AudioSource>().volume = 0;
+                        if (!isColliderMusicPlay) soundController.BGMStopCheck();
+                    }
+                }
+
+                PlayColliderBGM(other);
             }
         }
     }
@@ -49,23 +102,20 @@ public class MusicCollider_SY : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            while (other.GetComponent<AudioSource>().volume > 0)
+            if (other.GetComponent<AudioSource>().clip.name == "감옥BGM" || other.GetComponent<AudioSource>().clip.name == "가야금파티BGM")
             {
-                other.GetComponent<AudioSource>().volume -= Time.deltaTime * 1.5f;
-
-                if (other.GetComponent<AudioSource>().volume <= 0)
+                while (other.GetComponent<AudioSource>().volume > 0)
                 {
-                    other.GetComponent<AudioSource>().volume = 0;
-                    other.GetComponent<AudioSource>().Pause();
-                }
-            }
-            soundXrinter.soundUI = defaultUI;
-            if (soundController.seaToggle.isOn) soundController.SetSeaBGM(true);
-            else if (soundController.beachToggle.isOn) soundController.SetBeachBGM(true);
-            else if (soundController.coolToggle.isOn) soundController.SetCoolBGM(true);
-            else if (soundController.freshToggle.isOn) soundController.SetFreshBGM(true);
+                    other.GetComponent<AudioSource>().volume -= Time.deltaTime * 1.5f;
 
-            soundController.SetVolume(1);
+                    if (other.GetComponent<AudioSource>().volume <= 0)
+                    {
+                        other.GetComponent<AudioSource>().volume = 0;
+                    }
+                }
+                if (!isPlayerInCollider) soundController.BGMStopCheck();
+            }
+        
         }
     }
 }

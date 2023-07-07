@@ -7,7 +7,6 @@ public class Sound_xrinter_SY : MonoBehaviour
     public GameObject soundUI;
 
     public void openUI()
-
     {
         soundUI.SetActive(true);
     }

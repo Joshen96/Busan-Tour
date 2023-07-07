@@ -249,7 +249,6 @@ public class SpeechBubbleText_SY : MonoBehaviour
             boogiAction.SpeechBubble.SetActive(false);
             boogiAni.SetInteger("AniNum", 0);
         }
-             
     }
 
     IEnumerator Typing(string text)
@@ -273,5 +272,15 @@ public class SpeechBubbleText_SY : MonoBehaviour
     {
         if (num >= animeNums.Count) return;
         boogiAni.SetInteger("AniNum", animeNums[num]);
+    }
+
+    public void PlayVoice(int num)
+    {
+        if (num >= audioClip.Count) return;
+        if (GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().Pause();
+
+        GetComponent<AudioSource>().clip = audioClip[num];
+        GetComponent<AudioSource>().volume = 0f; // À½·®!!!!!!!!!!!!!!!!!
+        GetComponent<AudioSource>().Play();
     }
 }

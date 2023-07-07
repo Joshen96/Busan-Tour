@@ -107,8 +107,7 @@ public class BoogiAction_SY : MonoBehaviour
         speechText.gameObject.GetComponent<TextMeshProUGUI>().text = "";
         if (!nextButton.activeSelf) nextButton.SetActive(true);
         if (textIndex != 0) textIndex = 0;
-        speechText.SetNpcTalkAni(language, other.gameObject.name);          // 대사 설정
-
+        speechText.SetNpcTalkAni(language, other.gameObject.name);          // 대사+애니+소리
     }
 
     public void PlayerOnTriggerStay(Collider other)
@@ -117,12 +116,26 @@ public class BoogiAction_SY : MonoBehaviour
 
         if (other.gameObject.tag == "TouristAttraction")
         {
+            if (language == "KOR")
+            {
+                if (!isClickNextButton && textIndex == 0)
+                {
+                    speechText.PlayTyping(textIndex);
+                    speechText.PlayAnim(textIndex);
+                    speechText.PlayVoice(textIndex);
+                    textIndex++;
+                }
+            }
+            else if (language == "ENG")
+            {
                 if (!isClickNextButton && textIndex == 0)
                 {
                     speechText.PlayTyping(textIndex);
                     speechText.PlayAnim(textIndex);
                     textIndex++;
                 }
+            }
+            
             
 
             if (isClickNextButton)
@@ -143,6 +156,7 @@ public class BoogiAction_SY : MonoBehaviour
         {
             boogiIn = false;
             StartCoroutine(MomentToExit());
+            SpeechBubble.GetComponent<AudioSource>().Pause();
         }
     }
 
