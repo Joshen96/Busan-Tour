@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class SoundControlller_SY : MonoBehaviour
 {
     public AudioSource audioSource = null;
-    [SerializeField] private Slider slider = null;
     private float preSoundVolume = 0;
 
+    #region Public Variables
+    [Header(" BGM Toggle -")]
     public Toggle seaToggle = null;
     public Toggle beachToggle = null;
     public Toggle freshToggle = null;
     public Toggle coolToggle = null;
+    #endregion
+
 
     private void Awake()
     {
@@ -36,6 +39,25 @@ public class SoundControlller_SY : MonoBehaviour
             if (audioSource.volume == 0f) audioSource.volume = preSoundVolume;
         }
     }
+
+    public void BGMStopCheck()
+    {
+        if (!seaToggle.isOn && !beachToggle.isOn && !freshToggle.isOn && !coolToggle.isOn) audioSource.clip = null;
+        else BGMPlayCheck();
+    }
+
+    private void BGMPlayCheck()
+    {
+        if (audioSource.volume < 1f) audioSource.volume = 1f;
+
+        if (seaToggle.isOn) SetSeaBGM(true);
+        else if (beachToggle.isOn) SetBeachBGM(true);
+        else if (freshToggle.isOn) SetFreshBGM(true);
+        else if (coolToggle.isOn) SetCoolBGM(true);
+    }
+
+    // BGM
+    #region Public Variables
 
     public void SetSeaBGM(bool _check)
     {
@@ -70,8 +92,13 @@ public class SoundControlller_SY : MonoBehaviour
                 }
             }
         }
-    }
+        else if (!_check)
+        {
+            BGMStopCheck();
+        }
 
+        if (audioSource.volume < 1f) audioSource.volume = 1f;
+    }
     public void SetBeachBGM(bool _check)
     {
         if (_check)
@@ -105,6 +132,12 @@ public class SoundControlller_SY : MonoBehaviour
                 }
             }
         }
+        else if (!_check)
+        {
+            BGMStopCheck();
+        }
+
+        if (audioSource.volume < 1f) audioSource.volume = 1f;
     }
     public void SetFreshBGM(bool _check)
     {
@@ -139,6 +172,12 @@ public class SoundControlller_SY : MonoBehaviour
                 }
             }
         }
+        else if (!_check)
+        {
+            BGMStopCheck();
+        }
+
+        if (audioSource.volume < 1f) audioSource.volume = 1f;
     }
     public void SetCoolBGM(bool _check)
     {
@@ -173,5 +212,12 @@ public class SoundControlller_SY : MonoBehaviour
                 }
             }
         }
+        else if (!_check)
+        {
+            BGMStopCheck();
+        }
+
+        if (audioSource.volume < 1f) audioSource.volume = 1f;
     }
+    #endregion
 }

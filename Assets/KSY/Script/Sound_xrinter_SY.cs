@@ -9,7 +9,6 @@ public class Sound_xrinter_SY : MonoBehaviour
     public AudioClip audioClip;
     public AudioClip audioClip2;
     public void openUI()
-
     {
         audioSource.clip = audioClip;
         audioSource.Play();
