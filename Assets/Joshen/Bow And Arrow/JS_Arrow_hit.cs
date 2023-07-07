@@ -6,7 +6,9 @@ public class JS_Arrow_hit : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem core;//Á¡¼ö
-    
+
+    [SerializeField]
+    AudioSource hit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +16,7 @@ public class JS_Arrow_hit : MonoBehaviour
         if(other.CompareTag("ArrowTip"))
         {
             core.Play();
+            hit.Play();
         }
     }
 
