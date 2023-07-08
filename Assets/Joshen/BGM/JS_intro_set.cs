@@ -14,6 +14,8 @@ public class JS_intro_set : MonoBehaviour
             if (!start)
             {
                 start = true;
+                soundController.seaToggle.isOn = true;
+                
                 StartCoroutine(StartInterval());
             }
         }
@@ -21,10 +23,12 @@ public class JS_intro_set : MonoBehaviour
 
     IEnumerator StartInterval()
     {
-        soundController.seaToggle.isOn = true;
+       // soundController.seaToggle.isOn = true;
 
         yield return new WaitForSeconds(13.5f);
-        soundController.freshToggle.isOn = true;
+
+        soundController.audioSource.Pause();
+        //soundController.freshToggle.isOn = true;
         this.gameObject.SetActive(false);
     }
 }

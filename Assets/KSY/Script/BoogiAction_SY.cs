@@ -124,9 +124,19 @@ public class BoogiAction_SY : MonoBehaviour
                     speechText.PlayAnim(textIndex);
                     speechText.PlayVoice(textIndex);
                     textIndex++;
+                } 
+                else if(isClickNextButton)
+                {
+                    isClickNextButton = false;
+                    speechText.PlayTyping(textIndex);
+                    speechText.PlayAnim(textIndex);
+                    speechText.PlayVoice(textIndex);
+                    textIndex++;
                 }
+
             }
-            else if (language == "ENG")
+
+            else if(language == "ENG")
             {
                 if (!isClickNextButton && textIndex == 0)
                 {
@@ -134,17 +144,16 @@ public class BoogiAction_SY : MonoBehaviour
                     speechText.PlayAnim(textIndex);
                     textIndex++;
                 }
-            }
-            
-            
+                else if (isClickNextButton)
+                {
+                    isClickNextButton = false;
+                    speechText.PlayTyping(textIndex);
+                    speechText.PlayAnim(textIndex);
 
-            if (isClickNextButton)
-            {
-                isClickNextButton = false;
-                speechText.PlayTyping(textIndex);
-                speechText.PlayAnim(textIndex);
-                textIndex++;
+                    textIndex++;
+                }
             }
+           
         }
     }
 
@@ -156,7 +165,7 @@ public class BoogiAction_SY : MonoBehaviour
         {
             boogiIn = false;
             StartCoroutine(MomentToExit());
-            SpeechBubble.GetComponent<AudioSource>().Pause();
+            // SpeechBubble.GetComponent<AudioSource>().Pause();   
         }
     }
 
