@@ -48,7 +48,7 @@ public class SoundControlller_SY : MonoBehaviour
 
     private void BGMPlayCheck()
     {
-        if (audioSource.volume < 1f) audioSource.volume = 1f;
+        if (audioSource.volume < 0.25f) audioSource.volume = 0.25f;
 
         if (seaToggle.isOn) SetSeaBGM(true);
         else if (beachToggle.isOn) SetBeachBGM(true);
@@ -71,6 +71,7 @@ public class SoundControlller_SY : MonoBehaviour
             if (!audioSource.clip)      // 오디오 클립 null이면
             {
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "바다느낌BGM");
+                audioSource.volume = 1f;
                 audioSource.Play();
             }
             else                        // 오디오 클립 null 아니면
@@ -82,6 +83,7 @@ public class SoundControlller_SY : MonoBehaviour
                 {
                     if (audioSource.isPlaying) return;
                     else audioSource.Play();
+                    audioSource.volume = 1f;
                 }
 
                 else if (audioSource.clip.name != "바다느낌BGM")
@@ -89,6 +91,7 @@ public class SoundControlller_SY : MonoBehaviour
                     audioSource.Pause();
                     audioSource.clip = Resources.Load<AudioClip>("BGM/" + "바다느낌BGM");
                     audioSource.Play();
+                    audioSource.volume = 1f;
                 }
             }
         }
@@ -97,7 +100,7 @@ public class SoundControlller_SY : MonoBehaviour
             BGMStopCheck();
         }
 
-        if (audioSource.volume < 1f) audioSource.volume = 1f;
+        //if (audioSource.volume < 1f) audioSource.volume = 1f;
     }
     public void SetBeachBGM(bool _check)
     {
@@ -112,6 +115,7 @@ public class SoundControlller_SY : MonoBehaviour
             {
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "해변느낌BGM");
                 audioSource.Play();
+                audioSource.volume = 0.25f;
             }
             else                        // 오디오 클립 null 아니면
             {
@@ -122,6 +126,7 @@ public class SoundControlller_SY : MonoBehaviour
                 {
                     if (audioSource.isPlaying) return;
                     else audioSource.Play();
+                    audioSource.volume = 0.25f;
                 }
 
                 else if (audioSource.clip.name != "해변느낌BGM")
@@ -129,6 +134,7 @@ public class SoundControlller_SY : MonoBehaviour
                     audioSource.Pause();
                     audioSource.clip = Resources.Load<AudioClip>("BGM/" + "해변느낌BGM");
                     audioSource.Play();
+                    audioSource.volume = 0.25f;
                 }
             }
         }
@@ -137,7 +143,7 @@ public class SoundControlller_SY : MonoBehaviour
             BGMStopCheck();
         }
 
-        if (audioSource.volume < 1f) audioSource.volume = 1f;
+        //if (audioSource.volume < 1f) audioSource.volume = 1f;
     }
     public void SetFreshBGM(bool _check)
     {
@@ -152,6 +158,7 @@ public class SoundControlller_SY : MonoBehaviour
             {
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "산뜻한느낌BGM");
                 audioSource.Play();
+                audioSource.volume = 0.25f;
             }
             else                        // 오디오 클립 null 아니면
             {
@@ -162,6 +169,7 @@ public class SoundControlller_SY : MonoBehaviour
                 {
                     if (audioSource.isPlaying) return;
                     else audioSource.Play();
+                    audioSource.volume = 0.25f;
                 }
 
                 else if (audioSource.clip.name != "산뜻한느낌BGM")
@@ -169,6 +177,7 @@ public class SoundControlller_SY : MonoBehaviour
                     audioSource.Pause();
                     audioSource.clip = Resources.Load<AudioClip>("BGM/" + "산뜻한느낌BGM");
                     audioSource.Play();
+                    audioSource.volume = 0.25f;
                 }
             }
         }
@@ -177,7 +186,7 @@ public class SoundControlller_SY : MonoBehaviour
             BGMStopCheck();
         }
 
-        if (audioSource.volume < 1f) audioSource.volume = 1f;
+        //if (audioSource.volume < 1f) audioSource.volume = 1f;
     }
     public void SetCoolBGM(bool _check)
     {
@@ -192,6 +201,7 @@ public class SoundControlller_SY : MonoBehaviour
             {
                 audioSource.clip = Resources.Load<AudioClip>("BGM/" + "시원한느낌BGM");
                 audioSource.Play();
+                audioSource.volume = 0.25f;
             }
             else                        // 오디오 클립 null 아니면
             {
@@ -202,6 +212,7 @@ public class SoundControlller_SY : MonoBehaviour
                 {
                     if (audioSource.isPlaying) return;
                     else audioSource.Play();
+                    audioSource.volume = 0.25f;
                 }
 
                 else if (audioSource.clip.name != "시원한느낌BGM")
@@ -209,6 +220,7 @@ public class SoundControlller_SY : MonoBehaviour
                     audioSource.Pause();
                     audioSource.clip = Resources.Load<AudioClip>("BGM/" + "시원한느낌BGM");
                     audioSource.Play();
+                    audioSource.volume = 0.25f;
                 }
             }
         }
@@ -217,7 +229,7 @@ public class SoundControlller_SY : MonoBehaviour
             BGMStopCheck();
         }
 
-        if (audioSource.volume < 1f) audioSource.volume = 1f;
+        //if (audioSource.volume < 0.25f) audioSource.volume = 0.25f;
     }
     #endregion
 }

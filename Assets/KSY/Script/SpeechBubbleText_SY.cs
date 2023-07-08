@@ -280,7 +280,7 @@ public class SpeechBubbleText_SY : MonoBehaviour
         if (GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().Pause();
 
         GetComponent<AudioSource>().clip = audioClip[num];
-        GetComponent<AudioSource>().volume = 0f; // 음량!!!!!!!!!!!!!!!!!
+        GetComponent<AudioSource>().volume = 0.5f; // 음량!!!!!!!!!!!!!!!!!
         GetComponent<AudioSource>().Play();
     }
 }
