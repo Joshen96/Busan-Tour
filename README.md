@@ -14,3 +14,4 @@
 ![활쏘기_AdobeExpress](https://github.com/Joshen96/Busan-Tour/assets/64350099/23a689f0-450b-47c1-a5f4-0a4c30add06d)
 ![물고기잡기_AdobeExpress (1)](https://github.com/Joshen96/Busan-Tour/assets/64350099/72fa951a-9770-4ecf-a138-5e4b338a67d0)
 ![Uploading 부기_npc_활성화3_AdobeExpress.gif…]()
+![Uploading 부기_npc_활성화2_AdobeExpress.gif…]()
