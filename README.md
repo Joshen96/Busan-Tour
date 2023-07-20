@@ -6,6 +6,9 @@
 팀원: 김세영(개발), 서현재(개발), 김병찬(개발)
 
 팀원: 최아름(디자인), 이아름(디자인)
+
+간단GIF
+
 ![Expo버스_AdobeExpress](https://github.com/Joshen96/Busan-Tour/assets/64350099/b71e6f6e-46ec-41b1-84c6-ab034742a4aa)
 ![드론1_AdobeExpress](https://github.com/Joshen96/Busan-Tour/assets/64350099/4d11e71b-fcfd-41cd-8a1d-6ae36e68e8b1)
 ![활쏘기_AdobeExpress](https://github.com/Joshen96/Busan-Tour/assets/64350099/23a689f0-450b-47c1-a5f4-0a4c30add06d)
